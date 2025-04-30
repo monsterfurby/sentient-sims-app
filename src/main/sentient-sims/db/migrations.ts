@@ -102,6 +102,20 @@ export const migrations: Map<string, DbMigrationSql> = new Map(
       ALTER TABLE participant
       ADD COLUMN name TEXT;
     `,
+    '007-create-global-memory-table': `
+      CREATE TABLE global_memory (
+        id INTEGER PRIMARY KEY,
+        content TEXT NOT NULL,
+        label TEXT,
+        timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+      );
+    `,
+    '008-update-global-memory-table': `
+      ALTER TABLE global_memory
+      ADD COLUMN importance INTEGER DEFAULT 0,
+      ADD COLUMN created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      ADD COLUMN updated_at DATETIME DEFAULT CURRENT_TIMESTAMP;
+    `,
   }),
 );
 

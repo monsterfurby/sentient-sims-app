@@ -41,6 +41,7 @@ import { MappingController } from './controllers/MappingController';
 import { MappingService } from './services/MappingService';
 import { VoiceController } from './controllers/VoiceController';
 import { WebsocketController } from './controllers/WebsocketController';
+import globalMemoryRoutes from './routes/GlobalMemoryRoutes';
 
 export type ApiOptions = {
   port: number;
@@ -221,6 +222,9 @@ export function runApi({
     '/websocket/isconnected',
     new WebsocketController().isConnected,
   );
+
+  // Add global memory routes
+  expressApp.use('/api/global-memories', globalMemoryRoutes);
 
   return expressApp.listen(port, () => {
     log.debug(`Server is running on port ${port}`);

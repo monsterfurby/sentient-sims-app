@@ -4,9 +4,12 @@ export enum ModWebsocketMessageType {
   NOTIFICATION = 'notification',
   CLEAR_SIM_CACHE = 'clear_sim_cache',
   MIGRATE_SINGLE_SLOT_SAVE = 'migrate_single_slot_save',
-  MEMORY_DELETED = 'memory_deleted',
-  MEMORY_EDITED = 'memory_edited',
-  MEMORY_CREATED = 'memory_created',
+  MEMORY_DELETED = 'MEMORY_DELETED',
+  MEMORY_EDITED = 'MEMORY_EDITED',
+  MEMORY_CREATED = 'MEMORY_CREATED',
+  GLOBAL_MEMORY_CREATED = 'GLOBAL_MEMORY_CREATED',
+  GLOBAL_MEMORY_DELETED = 'GLOBAL_MEMORY_DELETED',
+  GLOBAL_MEMORY_EDITED = 'GLOBAL_MEMORY_EDITED',
 }
 
 export type ModWebsocketMessage = {

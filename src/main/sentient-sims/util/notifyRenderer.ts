@@ -11,6 +11,7 @@ import { DeleteMemoryRequest } from '../models/GetMemoryRequest';
 import { sendModNotification } from '../websocketServer';
 import { ModWebsocketMessageType } from '../models/ModWebsocketMessage';
 import { CaughtError } from '../models/CaughtError';
+import { GlobalMemoryEntity } from '../db/entities/GlobalMemoryEntity';
 
 function notifyAllWindows(message: string, ...args: any[]) {
   electron?.BrowserWindow?.getAllWindows().forEach((wnd) => {
@@ -105,4 +106,31 @@ export function notifyMapInteraction(event: InteractionMappingEvent) {
     JSON.stringify(event, null, 2),
   );
   notifyAllWindows('on-map-interaction', event);
+}
+
+export function notifyGlobalMemoryAdded(memory: GlobalMemoryEntity) {
+  log.debug('Sending new global memory added to renderer');
+  notifyAllWindows('on-global-memory-added', memory);
+  sendModNotification({
+    type: ModWebsocketMessageType.GLOBAL_MEMORY_CREATED,
+    memory,
+  });
+}
+
+export function notifyGlobalMemoryDeleted(id: { id: number }) {
+  log.debug('Sending global memory deleted to renderer');
+  notifyAllWindows('on-global-memory-deleted', id);
+  sendModNotification({
+    type: ModWebsocketMessageType.GLOBAL_MEMORY_DELETED,
+    memory_id: id.id,
+  });
+}
+
+export function notifyGlobalMemoryEdited(memory: GlobalMemoryEntity) {
+  log.debug('Sending global memory edited to renderer');
+  notifyAllWindows('on-global-memory-edited', memory);
+  sendModNotification({
+    type: ModWebsocketMessageType.GLOBAL_MEMORY_EDITED,
+    memory,
+  });
 }
