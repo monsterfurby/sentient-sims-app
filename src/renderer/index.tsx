@@ -30,6 +30,7 @@ import TraitsPage from './TraitsPage';
 import { AudioContextProvider } from './providers/AudioContextProvider';
 import OfflineMemory from './OfflineMemory';
 import { WebsocketProvider } from './providers/WebsocketProvider';
+import GlobalMemoryPage from './GlobalMemoryPage';
 
 const updatedAwsConfig = {
   ...awsExports,
@@ -77,6 +78,10 @@ const router = createMemoryRouter([
       {
         path: '/memories',
         element: <MemoriesPage />,
+      },
+      {
+        path: '/global-memory',
+        element: <GlobalMemoryPage />,
       },
       {
         path: '/last-exception',

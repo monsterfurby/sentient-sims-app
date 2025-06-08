@@ -44,7 +44,6 @@ export default function DebugCard() {
       </Box>
       <VersionFormHelper text="App Version" version={versions.app} />
       <VersionFormHelper text="Mod Version" version={versions.mod} />
-      <VersionFormHelper text="Game Version" version={versions.game} />
       <AIStatusComponent />
       <PatreonDebug />
       <WebGpuDebug />

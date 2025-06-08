@@ -133,6 +133,14 @@ function MenuBar({ hideSideBar, setHideSideBar }: MenuBarProperties) {
             </Button>
             <Button
               color="secondary"
+              onClick={() => navigate('/global-memory')}
+              sx={{ marginLeft: '5px' }}
+              id="global-memory"
+            >
+              Global Memory
+            </Button>
+            <Button
+              color="secondary"
               onClick={() => navigate('/settings')}
               sx={{ marginLeft: '5px' }}
               id="settings"

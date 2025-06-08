@@ -142,11 +142,12 @@ const createWindow = async () => {
 
   log.transports.file.level = 'info';
   autoUpdater.logger = log;
-  try {
-    autoUpdater.checkForUpdatesAndNotify();
-  } catch (err) {
-    log.error(`Unable to check for updates and notify`, err);
-  }
+  // Disabled auto updater for custom fork
+  // try {
+  //   autoUpdater.checkForUpdatesAndNotify();
+  // } catch (err) {
+  //   log.error(`Unable to check for updates and notify`, err);
+  // }
 };
 
 /**
